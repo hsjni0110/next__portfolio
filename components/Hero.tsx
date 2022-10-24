@@ -3,6 +3,7 @@ import { Cursor, useTypewriter } from 'react-simple-typewriter';
 import BackgroundCircle from './BackgroundCircle';
 import Lottie from 'react-lottie-player';
 import lottieJson from '../public/hero_image.json';
+import Link from 'next/link';
 
 type Props = {}
 
@@ -28,7 +29,7 @@ function Hero({ }: Props) {
                 play
                 style={{ width: 150, height: 150 }}
             />
-
+            <div className='z-20'>
             <h2 className='text-sm uppercase text-gray-500 pb-2 tracking-widest'>
                 Software Engineer
             </h2>
@@ -36,11 +37,20 @@ function Hero({ }: Props) {
                 <span>{text}</span>
                 <Cursor cursorColor='#F7AB0A' />
             </h1>
-            <div>
-                <button className='heroButton'>About</button>
-                <button className='heroButton'>Experience</button>
-                <button className='heroButton'>Skills</button>
-                <button className='heroButton'>Projects</button>
+            <div className='pt-5'>
+                <Link href='#about'>
+                    <button className='heroButton'>About</button>
+                </Link>
+                <Link href='#experience'>
+                    <button className='heroButton'>Experience</button>
+                </Link>
+                <Link href='#skills'>
+                    <button className='heroButton'>Skills</button>
+                </Link>
+                <Link href='#projects'>
+                    <button className='heroButton'>Projects</button>
+                </Link>
+            </div>
             </div>
         </div>
     )
