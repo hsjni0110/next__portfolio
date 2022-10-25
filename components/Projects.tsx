@@ -1,11 +1,13 @@
 import React from 'react'
 import { motion } from 'framer-motion';
+import { Project } from '../typings';
+import { urlFor } from '../sanaty';
 
-type Props = {}
+type Props = {
+    projects: Project[]
+}
 
-const Projects = (props: Props) => {
-
-    const projects = [1, 2, 3, 4, 5]
+const Projects = ({projects}: Props) => {
 
     return (
         <motion.div
@@ -21,8 +23,8 @@ const Projects = (props: Props) => {
             <div className='relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-madatory z-20
             scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A] scrollbar-thin
             '>
-                {projects.map((project, i) => (
-                    <div className='w-screen flex-shrink-0 snap-center flex flex-col items-center justify-center p-20
+                {projects?.map((project, i) => (
+                    <div key={project._id} className='w-screen flex-shrink-0 snap-center flex flex-col items-center justify-center p-20
               md:p-44 h-screen'>
                         <motion.img
                             initial={{
@@ -34,19 +36,30 @@ const Projects = (props: Props) => {
                             }}
                             whileInView={{ opacity:1, y:0 }}
                             viewport={{ once: true }}
-                            src='/project_img.png'
+                            src={urlFor(project?.image).url()}
                             alt=''
                             className='w-[300px] h-[300px]'
                         />
                         <div className='space-y-10 px-0 md:px-10 max-w-5xl pb-5'>
                             <h4 className='text-3xl font-semibold text-center'>
                                 <span className='underline decoration-[#F7AB0A]/50'>Case Study {i + 1} of {projects.length}:</span>{" "}
-                                UPS clone
+                                {project?.title}
                             </h4>
+
+                            <div className='flex items-center space-x-2 justify-center'>
+                            {project?.technologies.map((technology => (
+                                <img key={technology._id}
+                                className='h-10 w-10'
+                                src={urlFor(technology.image).url()}
+                                alt=''
+                                />
+
+                            )))}
+                            </div>
                         </div>
 
                         <p className='text-lg text-center md:text-left'>
-                            끓는 별과 이것이야말로 이상을 길지 피다. 찬미를 못할 이상은 피고 끝까지 자신과 사막이다. 내려온 구할 내는 이상 찬미를 있음으로써 무엇을 오직 이것이다. 관현악이며, 끓는 그들의 불어 피가 같은 피에 것은 웅대한 위하여서. 쓸쓸한 자신과 역사를 운다. 우리의 있는 희망의 말이다. 가는 보이는 때에, 현저하게 풀밭에 불어 인생에 부패뿐이다. 인생을 거친 하여도 같지 너의 운다. 소금이라 작고 어디 어디 봄바람을 것이다.
+                            {project?.summary}
                         </p>
                     </div>
 

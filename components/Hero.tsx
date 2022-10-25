@@ -4,14 +4,17 @@ import BackgroundCircle from './BackgroundCircle';
 import Lottie from 'react-lottie-player';
 import lottieJson from '../public/hero_image.json';
 import Link from 'next/link';
+import { PageInfo } from '../typings';
 
-type Props = {}
+type Props = {
+    pageInfo: PageInfo;
+}
 
-function Hero({ }: Props) {
+function Hero({ pageInfo }: Props) {
 
     const [text, count] = useTypewriter({
         words: [
-            "Hi, My name is Seokjin",
+            `Hi, My name is ${pageInfo?.name}`,
             "Guy-who-loves-Coffee.tsx",
             "<ButLoveToCodeMore />"
         ],
@@ -31,7 +34,7 @@ function Hero({ }: Props) {
             />
             <div className='z-20'>
             <h2 className='text-sm uppercase text-gray-500 pb-2 tracking-widest'>
-                Software Engineer
+                {pageInfo?.role}
             </h2>
             <h1 className='text-4xl lg:text-5xl font-semibold px-10'>
                 <span>{text}</span>

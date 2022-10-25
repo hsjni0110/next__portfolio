@@ -33,7 +33,7 @@ const ContactMe = (props: Props) => {
             <div className='flex flex-col space-y-10'>
                 <h4 className='text-3xl font-semibold'>
                     I have got just what you need{" "}
-                    <span className='decoration-[#F7AB0A] underline'>Let's talk.</span>
+                    <span className='decoration-[#F7AB0A] underline'>talk with me</span>
                 </h4>
 
                 <div className='flex flex-col space-y-10'>
